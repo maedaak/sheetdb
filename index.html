@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Excelを使って簡易書誌検索ページ</title>
+</head>
+<body>
+    <heaer>
+        <h1>Excelを使って簡易書誌検索ページ</h1>
+        書誌1万件でテスト中
+    </heaer>
+    <div>
+        <input id="search" class="search" onkeypress="enterkey_down(event.key);" size="50" type="text">
+        <input value="Search" onclick="show_list()" type="button">
+        表示件数:&nbsp;
+        <select id="page_size" onChange="show_list();">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="cat10000.xlsx">入力Excelデータ</a>
+        </p>
+    </div>
+    <div id="pagenation" class="pagenation"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.11.19/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
+    <script type="text/x-handlebars-template" id="page_template">
+        <h2>{{hits}} 件ヒットしました</h2><br />
+        {{#if disp_page }}
+            <h2>ページ: 
+            {{#if prev_page }}
+                <small><a href="#" onclick="show_list(1);">&lt;先頭へ&gt;</a></small>&nbsp;
+                <small><a href="#" onclick="show_list({{prev_page}});">&lt;前へ&gt;</a></small>&nbsp;
+            {{/if}}
+            {{#each page}}
+                {{#if current_page }}
+                    {{page_no}}
+                {{else}}
+                    <a href="#" onclick="show_list({{page_no}});">{{page_no}}</a>
+                {{/if}}
+            {{/each}}
+            {{#if next_page }}
+                <small><a href="#" onclick="show_list({{next_page}});">&lt;次へ&gt;</a></small>&nbsp;
+                <small><a href="#" onclick="show_list({{last_page}});">&lt;末尾へ&gt;</a></small>&nbsp;
+            {{/if}}
+            </h2>
+        {{/if}}
+    </script>
+    <div id="contents">
+        <h2>Now loading</h2>
+    </div>
+    <footer>
+        <h2>目録データのソースについて</h2>
+        このページで使っているサンプル図書リストは、国立情報学研究所の「NII総合目録データベース（NACSIS-CAT）」<a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">(CC-BYライセンス)</a>を抜粋しています。
+      </footer>    
+    <script type="text/x-handlebars-template" id="list_template">
+        {{#each db}}
+          <dl>
+             <dt>{{title}}</dt>
+             <dd>{{creator}}</dd>
+             <dd>{{publisher}}</dd>
+             <dd>{{language}}</dd>
+             <dd>{{ncid}}</dd>
+             <dd>{{edition}}</dd>
+             <dd>{{publicationDate}}</dd>
+             <dd>{{note}}</dd>
+             <dd>{{subject}}</dd>
+           </dl>
+        {{/each}}
+    </script>
+    <script src="sheetdb.js"></script>
+    <script>
+        const excel_file = 'cat10000.xlsx';
+        $(document).ready(function () {
+            output = excel2list();
+        });
+    </script>
+</body>
+</html>
