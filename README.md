@@ -1,5 +1,8 @@
 # 独自JavaScriptとExcelを使った書誌「１万件」検索サンプルページ
 
+## サンプルサイトURL
+https://maedaak.github.io/sheetdb/
+
 ## 概要
 独自JavaScriptとExcelを使った書誌「１万件」検索サンプルページである。
 
