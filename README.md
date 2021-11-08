@@ -32,8 +32,10 @@ NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用して
 - Wiki ( https://github.com/maedaak/sheetdb/wiki )を参照
 
 ## 関連サイト
-- https://maedaak.github.io/cat10000/
-- https://maedaak.github.io/listjs-tsv/
+- Lits.jsとTSVによる「１万件」書誌検索サンプルページ<
+ https://maedaak.github.io/cat10000/
+- List.jsのHTML内検索機能を使った書誌「１万件」検索サンプルページ
+ https://maedaak.github.io/listjs-tsv/
 
 
 ## Copy Right
