@@ -13,6 +13,7 @@ NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用して
 
 ## Excelデータの読み込み・文字列一致検索
 - Sheet.js を使用
+- Mustache記法となる
 
 ## HTMLテンプレート
 - Handlebars.js を使用
@@ -26,7 +27,7 @@ NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用して
 ## 利点
 - Excelのためデータメンテナンスが用意
 - 書誌「１万件」でもそれなりの速度で起動する
-- HTMLテンプレートエンジンHandlebars.jsの表現力が高い
+- HTMLテンプレートはメジャーなMustache記法である
 - AND検索をサポート
 
 ## 問題点
