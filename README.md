@@ -15,7 +15,7 @@ NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用して
 - SheetJS (https://github.com/SheetJS/sheetjs) を使用
 
 ## HTMLテンプレート
-- Handlebars.js を使用
+- Handlebars (https://handlebarsjs.com/) を使用
     - Mustache記法となる
 
 ## 機能
