@@ -4,7 +4,7 @@
 https://maedaak.github.io/sheetdb/
 
 ## 概要
-独自JavaScriptとExcelを使った書誌「１万件」検索サンプルページである。
+JavaScriptとExcelを使った書誌「１万件」検索サンプルページである。
 
 ## サンプルデータ
 NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用している。
