@@ -1,4 +1,5 @@
-// const search_fields_setting = ['title', 'creator', 'publisher', 'note'];
+// developed by Maeda Akira
+const search_fields_setting = ['title', 'creator', 'publisher', 'note'];
 // const filter_field = "";
 const defalt_page_size = 10;
 var page_size = defalt_page_size;
