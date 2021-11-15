@@ -12,18 +12,12 @@ var output = [];
 var result = [];
 
 function excel2list() {
-    var xhr = new XMLHttpRequest();
-	xhr.open('GET', excel_file, true);
-	xhr.responseType = 'arraybuffer';
-    xhr.onload = function() {
-        var arrayBuffer = this.response;
-        var data = new Uint8Array(arrayBuffer);
-        var chank = [];
-        for (var i = 0; i != data.length; ++i){
-            chank[i] = String.fromCharCode(data[i]);
-        }
-        var datastring = chank.join("");
-        var workbook = XLSX.read(datastring, {type: "binary"});
+    var req = new XMLHttpRequest();
+    req.open("GET", excel_file, true);
+    req.responseType = "arraybuffer";
+    req.onload = function() {
+        var data = new Uint8Array(req.response);
+        var workbook = XLSX.read(data, {type:"array"});
         output = to_json(workbook);
         result = output;
         pagenation();
@@ -31,7 +25,7 @@ function excel2list() {
         pagenation();
         disp_page();
     };
-    xhr.send();
+    req.send();
 }
 
 function to_json(workbook) {
