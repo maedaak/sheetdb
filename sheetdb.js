@@ -31,15 +31,15 @@ function excel2list() {
 
 function to_json(workbook) {
     let sheetName = workbook.SheetNames[0];
-    let result = XLSX.utils.sheet_to_json(
+    let data = XLSX.utils.sheet_to_json(
         workbook.Sheets[sheetName],
         {
             raw: true,
         });
-    return result;
+    return data;
 }
 
-// オリジナルのページネーションコードブロック
+// アイテム一覧
 function disp_page(){
     let start = (page - 1) * page_size;
     let end = parseInt(start) + parseInt(page_size);
@@ -51,6 +51,7 @@ function disp_page(){
     $("#contents").html(html);
 }
 
+// ページネーション
 function pagenation(){
     let size = Math.ceil(result.length / page_size);
     let page_link = {};
@@ -58,7 +59,7 @@ function pagenation(){
     
     page_link["prev_page"] = prev_page;
     let next_page = page + 1;
-    if (size == 1) {
+    if (size === 1) {
         page_link["next_page"] = 0;
     }
     else {
@@ -114,7 +115,7 @@ function pagenation(){
     $("#pagenation").html(html);
 }
 
-// リストを条件を絞って表示するオリジナルコードブロック
+// リストを条件を絞って表示する
 function show_list(no){
     page = no || 1;
     let keywords = $("#search").val();
@@ -123,7 +124,7 @@ function show_list(no){
     let newresult = [];
     for (let item of output){
         let match = 1;
-        // if (filter == "any") {
+        // if (filter === "any") {
         //  match = 1;
         // }
         // else if (item[filter_field].indexOf(filter) == -1){
@@ -153,6 +154,7 @@ function show_list(no){
     disp_page();
 }
 
+// 検索時のデータを正規化する
 function normaliz(data){
 	data = data.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
         return String.fromCharCode(s.charCodeAt(0) - 65248);
