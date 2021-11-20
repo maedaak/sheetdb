@@ -28,16 +28,12 @@ function excel2list() {
 }
 
 function to_json(workbook) {
-    let result = {};
     let sheetName = workbook.SheetNames[0];
-    let roa = XLSX.utils.sheet_to_json(
+    let result = XLSX.utils.sheet_to_json(
         workbook.Sheets[sheetName],
         {
-             sraw: true,
+            raw: true,
         });
-    if (roa.length > 0) {
-        result = roa;
-    }
     return result;
 }
 
