@@ -1,4 +1,10 @@
+// sheetdb.js
 // developed by Maeda Akira
+// MIT Licence
+// 
+// Powerd by 
+//   SheetsJS https://github.com/SheetJS/sheetjs Apache License 2.0
+//   Handlebars https://handlebarsjs.com/ MIT License
 
 const search_fields_setting = ['title', 'creator', 'publisher', 'note'];
 // const filter_field = "";

@@ -50,6 +50,7 @@ NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用して
 
 ## Copy Right
 ### index.html及びsheets.js
+- Licnece: MIT Licence
 - Developer: 東京大学情報システム部・前田朗
 - Contributor: 東京大学史料編纂所助教・中村覚
 
