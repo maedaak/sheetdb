@@ -1,4 +1,5 @@
 // developed by Maeda Akira
+
 const search_fields_setting = ['title', 'creator', 'publisher', 'note'];
 // const filter_field = "";
 const defalt_page_size = 10;
@@ -11,6 +12,7 @@ for (let field of search_fields_setting) {
 let output = [];
 let result = [];
 
+// SheetJS依存コードブロック
 function excel2list() {
     let req = new XMLHttpRequest();
     req.open("GET", excel_file, true);
@@ -37,6 +39,7 @@ function to_json(workbook) {
     return result;
 }
 
+// オリジナルのページネーションコードブロック
 function disp_page(){
 	let start = (page - 1) * page_size;
 	let end = parseInt(start) + parseInt(page_size);
@@ -111,6 +114,7 @@ function pagenation(){
     $("#pagenation").html(html);
 }
 
+// リストを条件を絞って表示するオリジナルコードブロック
 function show_list(no){
 	page = no || 1;
 	let keywords = $("#search").val();
