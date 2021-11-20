@@ -7,7 +7,7 @@ let page_size = defalt_page_size;
 let page;
 let search_fields = {};
 for (let field of search_fields_setting) {
-	search_fields[field] = 1;
+    search_fields[field] = 1;
 }
 let output = [];
 let result = [];
@@ -41,8 +41,8 @@ function to_json(workbook) {
 
 // オリジナルのページネーションコードブロック
 function disp_page(){
-	let start = (page - 1) * page_size;
-	let end = parseInt(start) + parseInt(page_size);
+    let start = (page - 1) * page_size;
+    let end = parseInt(start) + parseInt(page_size);
     let source = $("#list_template").html();
     let template = Handlebars.compile(source);
     let items = {}
@@ -52,14 +52,14 @@ function disp_page(){
 }
 
 function pagenation(){
-	let size = Math.ceil(result.length / page_size);
+    let size = Math.ceil(result.length / page_size);
     let page_link = {};
     let prev_page = page - 1;
     
     page_link["prev_page"] = prev_page;
     let next_page = page + 1;
     if (size == 1) {
-    	page_link["next_page"] = 0;
+        page_link["next_page"] = 0;
     }
     else {
         page_link["next_page"] = next_page;
@@ -87,15 +87,15 @@ function pagenation(){
     }
     let page_nos = [];
     for (let i = page_start; i <= page_end; i++) {
-       let data = {};
-       data["page_no"] = i;
-       if (i != page){
-           data["current_page"] = 0;
-       }
-       else {
-           data["current_page"] = 1;
-       }
-       page_nos.push(data);
+        let data = {};
+        data["page_no"] = i;
+        if (i != page){
+            data["current_page"] = 0;
+        }
+        else {
+            data["current_page"] = 1;
+        }
+        page_nos.push(data);
     }
     page_link["page"] = page_nos;
     
@@ -103,7 +103,7 @@ function pagenation(){
         page_link["disp_page"] = 1;
     }
     else {
-    	page_link["disp_page"] = 0;
+        page_link["disp_page"] = 0;
     }
     
     page_link["hits"] = result.length;
@@ -116,22 +116,22 @@ function pagenation(){
 
 // リストを条件を絞って表示するオリジナルコードブロック
 function show_list(no){
-	page = no || 1;
-	let keywords = $("#search").val();
-	let filter = $("#filter").val();
-	page_size = $("#page_size").val() || 10;
+    page = no || 1;
+    let keywords = $("#search").val();
+    let filter = $("#filter").val();
+    page_size = $("#page_size").val() || 10;
     let newresult = [];
     for (let item of output){
         let match = 1;
         // if (filter == "any") {
-        // 	match = 1;
+        //  match = 1;
         // }
         // else if (item[filter_field].indexOf(filter) == -1){
-        // 	match = 0;
+        //  match = 0;
         // }
-    	let marged_field = "";
+        let marged_field = "";
         for(key in item){
-	        if (search_fields[key] == 1) {
+            if (search_fields[key] == 1) {
                 marged_field = marged_field + "\t" + item[key];
             }
         }
