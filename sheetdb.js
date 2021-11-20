@@ -2,25 +2,24 @@
 const search_fields_setting = ['title', 'creator', 'publisher', 'note'];
 // const filter_field = "";
 const defalt_page_size = 10;
-var page_size = defalt_page_size;
-var page;
-var search_fields = {};
-for (var field of search_fields_setting) {
+let page_size = defalt_page_size;
+let page;
+let search_fields = {};
+for (let field of search_fields_setting) {
 	search_fields[field] = 1;
 }
-var output = [];
-var result = [];
+let output = [];
+let result = [];
 
 function excel2list() {
-    var req = new XMLHttpRequest();
+    let req = new XMLHttpRequest();
     req.open("GET", excel_file, true);
     req.responseType = "arraybuffer";
     req.onload = function() {
-        var data = new Uint8Array(req.response);
-        var workbook = XLSX.read(data, {type:"array"});
+        let data = new Uint8Array(req.response);
+        let workbook = XLSX.read(data, {type:"array"});
         output = to_json(workbook);
         result = output;
-        pagenation();
         page = 1;
         pagenation();
         disp_page();
@@ -29,9 +28,9 @@ function excel2list() {
 }
 
 function to_json(workbook) {
-    var result = {};
-    var sheetName = workbook.SheetNames[0];
-    var roa = XLSX.utils.sheet_to_json(
+    let result = {};
+    let sheetName = workbook.SheetNames[0];
+    let roa = XLSX.utils.sheet_to_json(
         workbook.Sheets[sheetName],
         {
              sraw: true,
@@ -43,23 +42,23 @@ function to_json(workbook) {
 }
 
 function disp_page(){
-	var start = (page - 1) * page_size;
-	var end = parseInt(start) + parseInt(page_size);
-    var source = $("#list_template").html();
-    var template = Handlebars.compile(source);
-    var items = {}
+	let start = (page - 1) * page_size;
+	let end = parseInt(start) + parseInt(page_size);
+    let source = $("#list_template").html();
+    let template = Handlebars.compile(source);
+    let items = {}
     items["db"] = result.slice(start, end);
-    var html = template(items);
+    let html = template(items);
     $("#contents").html(html);
 }
 
 function pagenation(){
-	var size = Math.ceil(result.length / page_size);
-    var page_link = {};
-    var prev_page = page - 1;
+	let size = Math.ceil(result.length / page_size);
+    let page_link = {};
+    let prev_page = page - 1;
     
     page_link["prev_page"] = prev_page;
-    var next_page = page + 1;
+    let next_page = page + 1;
     if (size == 1) {
     	page_link["next_page"] = 0;
     }
@@ -68,11 +67,11 @@ function pagenation(){
     }
     page_link["last_page"] = size;
     
-    var max_pages = 10;
-    var page_center = 6;
-    var pages = Math.ceil(result.length / page_size); 
-    var page_start;
-    var page_end;
+    let max_pages = 10;
+    let page_center = 6;
+    let pages = Math.ceil(result.length / page_size); 
+    let page_start;
+    let page_end;
     if (page >= max_pages) {
         page_start = page - page_center + 1;
         page_end = page + max_pages - page_center + 1;
@@ -87,9 +86,9 @@ function pagenation(){
             page_end = pages;
         }
     }
-    var page_nos = [];
-    for (var i = page_start; i <= page_end; i++) {
-       var data = {};
+    let page_nos = [];
+    for (let i = page_start; i <= page_end; i++) {
+       let data = {};
        data["page_no"] = i;
        if (i != page){
            data["current_page"] = 0;
@@ -110,27 +109,27 @@ function pagenation(){
     
     page_link["hits"] = result.length;
     
-    var source = $("#page_template").html();
-    var template = Handlebars.compile(source);
-    var html = template(page_link);
+    let source = $("#page_template").html();
+    let template = Handlebars.compile(source);
+    let html = template(page_link);
     $("#pagenation").html(html);
 }
 
 function show_list(no){
 	page = no || 1;
-	var keywords = $("#search").val();
-	var filter = $("#filter").val();
+	let keywords = $("#search").val();
+	let filter = $("#filter").val();
 	page_size = $("#page_size").val() || 10;
-    var newresult = [];
-    for (var item of output){
-        var match = 1;
+    let newresult = [];
+    for (let item of output){
+        let match = 1;
         // if (filter == "any") {
         // 	match = 1;
         // }
         // else if (item[filter_field].indexOf(filter) == -1){
         // 	match = 0;
         // }
-    	var marged_field = "";
+    	let marged_field = "";
         for(key in item){
 	        if (search_fields[key] == 1) {
                 marged_field = marged_field + "\t" + item[key];

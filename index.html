@@ -65,11 +65,11 @@
              <dd>{{creator}}</dd>
              <dd>{{publisher}}</dd>
              <dd>{{language}}</dd>
-             <dd>{{ncid}}</dd>
              <dd>{{edition}}</dd>
              <dd>{{publicationDate}}</dd>
              <dd>{{note}}</dd>
              <dd>{{subject}}</dd>
+             <dd><a href="{{url}}" target="_blank">{{ncid}}</a></dd>
            </dl>
         {{/each}}
     </script>
@@ -78,7 +78,7 @@
     </footer>
     <script src="sheetdb.js"></script>
     <script>
-        const excel_file = 'cat10000.xlsx';
+        const excel_file = 'cat10000_url.xlsx';
         $(document).ready(function () {
             output = excel2list();
         });
