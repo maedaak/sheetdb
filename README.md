@@ -53,6 +53,10 @@ NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用して
 - Licnece: MIT Licence
 - Developer: 東京大学情報システム部・前田朗
 - Contributor: 東京大学史料編纂所助教・中村覚
+- Powerd by:
+    - SheetsJS https://github.com/SheetJS/sheetjs Apache License 2.0
+    - Handlebars https://handlebarsjs.com/ MIT License
+    - jQuery https://github.com/jquery/jquery MIT License
 
 ### cat10000.xls
 - 国立情報学研究所の「NII総合目録データベース（NACSIS-CAT）」(CC-BYライセンス)から10000書誌を使用。
