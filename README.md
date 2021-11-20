@@ -58,5 +58,5 @@ NACSIS-CATの総合目録データベースの書誌情報(CC-BY)を使用して
     - Handlebars https://handlebarsjs.com/ MIT License
     - jQuery https://github.com/jquery/jquery MIT License
 
-### cat10000.xls
-- 国立情報学研究所の「NII総合目録データベース（NACSIS-CAT）」(CC-BYライセンス)から10000書誌を使用。
+### cat10000_url.xls
+- 国立情報学研究所の「NII総合目録データベース（NACSIS-CAT）」(CC-BYライセンス)から10000書誌を使用。CiNiiへのリンクは独自に追加した。
